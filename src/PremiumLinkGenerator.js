@@ -1,9 +1,12 @@
 import puppeteer from 'puppeteer';
 
-export const generate = async originalUrl => {
-    const browser = await puppeteer.launch({
+export const launchBrowser = async () => {
+    return await puppeteer.launch({
         headless: true
     });
+};
+
+export const generate = async (browser, originalUrl) => {
     const page = await browser.newPage();
     await page.goto('https://www.newscon.net/d/');
     await page.content();
@@ -45,8 +48,6 @@ export const generate = async originalUrl => {
     allHrefs.filter(href => href.includes("www.pastex.net")).forEach(href => {
         console.log(href);
     });
-
-    await browser.close();
 };
 
 const retrieveAllHrefs = async page => {
