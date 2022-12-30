@@ -7,8 +7,8 @@ describe("PremiumLinkGenerator", () => {
 
         await Promise.all(
             [
-                generate("https://rapidgator.net/file/9d7fd851dd2ff4d63193a9041ce3cd86/part186.mp4.html"),
-                generate("https://rapidgator.net/file/bf629552a02fe42f63f1b11175761fe5/N_angel314.mp4.html")
+                generate("https://rapidgator.net/file/28f564613e1d7b09cbcc28b74922bf66/BOKM2400.mp4.html"),
+                generate("https://rapidgator.net/file/ca8e37b698f379e97ad281798b907375/FMLU2847.zip.html")
             ]);
         done();
     });
