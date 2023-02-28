@@ -11,7 +11,7 @@ export const generate = async (browser, originalUrl) => {
     await page.goto('https://www.newscon.net/d/');
     await page.content();
     await page.waitForFunction(
-        'document.querySelector("body").innerText.includes("Open the generated snippet")',
+        'document.querySelector("body").innerText.includes("Premium link generator:")',
     );
 
     await page.type('.js-predictiveSearchInput', originalUrl);
@@ -28,7 +28,7 @@ export const generate = async (browser, originalUrl) => {
     await waitForTextsToAppear(
         page,
         "The premium link will appear in:",
-        10
+        20
     );
 
     await page.screenshot({path: 'screenshot1.png'});
@@ -36,7 +36,7 @@ export const generate = async (browser, originalUrl) => {
     console.log("start counting down " + originalUrl);
     await waitForTextsToAppear(
         page,
-        "copy the download URL inside it",
+        "Open this snippet",
         20
     );
     await page.screenshot({path: 'screenshot2.png'});
@@ -45,7 +45,7 @@ export const generate = async (browser, originalUrl) => {
 
     const allHrefs = await retrieveAllHrefs(page);
 
-    allHrefs.filter(href => href.includes("www.pastex.net")).forEach(href => {
+    allHrefs.filter(href => href.includes("snippet")).forEach(href => {
         console.log(href);
     });
 };
